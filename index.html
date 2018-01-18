@@ -1,0 +1,70 @@
+
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0" standardController="Account" applyBodyTag="False" applyHtmlTag="False"><aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" >
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Currency Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Import the Design System style sheet -->
+  <apex:slds />
+</head>
+<link type="text/css" rel="stylesheet" href="site.css">
+<link type="text/css" rel="stylesheet" href="slds.css">
+<script src="angular.min.js"></script>
+<script>
+    </script>
+	
+<script src="app.js"></script>
+<body ng-app="CurrencyConvert">
+<!--<div data-sly-use.nav="app.js"></div>-->
+<div  ng-controller="myCtrl" class="slds-scope">
+<div class="myapp">
+<br>
+
+<div class="slds-panel__section">
+	<div class="slds-form--horizontal" style="padding-right:30%;">	
+		  <h3 class="slds-text-heading--large slds-m-bottom " style="height: 5rem;padding-right:12%;">Currency Converter Widget</h3>
+<form name="myForm" class="elegant-aero">
+		<div class="slds-form-element">
+			<div  class="slds-form-element__control">
+				<label class="slds-form-element__label" for="select-01">Type in amount and select currency</label>
+			</div>
+			<div class="slds-form-element__control" >
+				<input id="inputSample2" class="slds-input"name="currency_val_from" pattern="numOnlyRegex" type="text"ng-keypress="convert()" ng-model="currency_val_from" ng-pattern="/^\d+$/" placeholder="Enter Amount" />
+			<span style="color:red" ng-show="myForm.currency_val_from.$error.pattern">Only number are allowed</span>
+			</div> 
+			<div class="slds-select_container">
+				<div class="slds-form-element__control">
+					<select class="slds-select"  ng-model="currency_from" ng-init="currency_from='USD'" ng-options="key as key for (key,value) in currencies">
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="slds-form-element">
+			<div  class="slds-form-element__control">
+				<label class="slds-form-element__label" for="select-01">Converted Amount</label>
+			</div>
+			<div class="slds-form-element__control">
+				<input id="inputSample2" disabled class="slds-input" type="text" ng-model="currency_val_to" placeholder="Convert To" />
+			</div>
+			<div class="slds-select_container">
+				<div class="slds-form-element__control">
+					<select class="slds-select" ng-change="convert()" ng-model="currency_to" ng-init="currency_to='CAD'" ng-options="key as key for (key,value) in currencies">
+					</select>
+				</div>
+			</div>
+		</div>
+		<a href="disclaimer.html">Disclaimer</a>
+	</div>
+	</form>
+</div>
+</div>
+</div>
+
+
+
+
+</body>
+</html>
